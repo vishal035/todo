@@ -11,7 +11,7 @@ function App() {
           </h1>
         </header>
         <main>
-          <TodoInput />
+          {/* <TodoInput /> */}
           <TodoList />
         </main>
       </section>
