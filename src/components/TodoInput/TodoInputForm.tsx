@@ -1,6 +1,7 @@
 import { ObjectID } from 'bson';
 import React, { useState } from 'react';
 import { ITodo } from '../../../Types/Interface';
+import Notification from '../Notification/Notification';
 
 interface IPropsType {
   onSaveTodo: (data: ITodo) => void;
@@ -8,15 +9,27 @@ interface IPropsType {
 
 const TodoInputForm = ({ onSaveTodo }: IPropsType) => {
   const [enteredTodo, setEnteredTodo] = useState('');
+  const [isValid, setIsValid] = useState(true);
+  let timer: NodeJS.Timeout;
 
   const formSubmitHandler = (event: any) => {
     event.preventDefault();
+
+    console.log(timer);
 
     const newTodo = {
       id: new ObjectID().toString(),
       todo: enteredTodo,
       done: false,
     };
+
+    if (enteredTodo.length === 0) {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        setIsValid((prevState) => true);
+      }, 1500);
+      return setIsValid(false);
+    }
 
     // console.log(newTodo);
     setEnteredTodo('');
@@ -25,6 +38,7 @@ const TodoInputForm = ({ onSaveTodo }: IPropsType) => {
 
   const inputChangeHandler = (event: any) => {
     setEnteredTodo(event.target.value);
+
     // console.log(event.target.value);
   };
   return (
@@ -37,6 +51,9 @@ const TodoInputForm = ({ onSaveTodo }: IPropsType) => {
         value={enteredTodo}
         placeholder={'Enter Task/ Just Testing...'}
       />
+      {!isValid && (
+        <Notification message={`That's same as doing nothing important 🤔`} />
+      )}
     </form>
   );
 };

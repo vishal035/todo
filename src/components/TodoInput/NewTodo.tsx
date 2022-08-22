@@ -3,10 +3,10 @@ import { ITodo } from '../../../Types/Interface';
 import TodoInputForm from './TodoInputForm';
 
 interface IPropsType {
-  addNewTodo: (todoData: ITodo) => void
+  addNewTodo: (todoData: ITodo) => void;
 }
 
-const TodoInput = ({addNewTodo}: IPropsType) => {
+const TodoInput = ({ addNewTodo }: IPropsType) => {
   const onSaveTodoHandler = (todoData: ITodo) => {
     // console.log(todoData);
     addNewTodo(todoData);

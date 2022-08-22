@@ -7,39 +7,31 @@ import { ITodo } from '../../../Types/Interface';
 
 interface IPropsType {
   todos: ITodo[];
+  onTodoDone: (updatedTodoData: ITodo) => void;
 }
 
-const TodoList = ({ todos }: IPropsType) => {
-  function onClickTodoDOne(event: any) {
-    // Get the status of Marked Done
-    if (event.target.dataset.markedDone === 'true') {
-      // if done: true  ==> change status to false
-      event.target.classList.remove('line-through', 'line-through-green-400');
-
-      //   todoTempData[updateTodo].done = false;
-    }
-
-    if (event.target.dataset.markDone === 'false') {
-      // if done: false ==> change status to true
-      event.target.classList.add('line-through', 'line-through-green-400');
-
-      //   todoTempData[updateTodo].done = true;
-    }
-    console.log({
-      key: event.target.dataset.key,
+const TodoList = ({ todos, onTodoDone }: IPropsType) => {
+  const onClickTodoDOne = (event: any) => {
+    // console.log({
+    //   id: event.target.dataset.key,
+    //   todo: event.target.innerText,
+    //   done: event.target.dataset.markedDone,
+    // });
+    onTodoDone({
+      id: event.target.dataset.key,
+      todo: event.target.innerText,
       done: event.target.dataset.markedDone,
-      value: event.target.innerText,
     });
-  }
+  };
 
   return (
     <div className="mx-8 mt-4 py-6 ">
       <ul className="flex flex-col items-center">
         {todos.map((todo) => (
           <li
+            onClick={onClickTodoDOne}
             key={todo.id}
             className="flex items-center px-4 py-2 w-4/6 rounded-sm my-2 ring-2 ring-white ring-opacity-60 ring-offset-2 ring-offset-green-300"
-            onClick={onClickTodoDOne}
           >
             <span
               className={`relative inline-block w-80${
