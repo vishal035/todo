@@ -15,12 +15,10 @@ const TodoInputForm = ({ onSaveTodo }: IPropsType) => {
   const formSubmitHandler = (event: any) => {
     event.preventDefault();
 
-    console.log(timer);
-
     const newTodo = {
       id: new ObjectID().toString(),
       todo: enteredTodo,
-      done: false,
+      done: 'false',
     };
 
     if (enteredTodo.length === 0) {

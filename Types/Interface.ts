@@ -1,5 +1,5 @@
 export interface ITodo {
   id: string;
   todo: string;
-  done: boolean;
+  done: string;
 }
