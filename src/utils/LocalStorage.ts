@@ -1,7 +1,4 @@
 import { ITodo, IStorage } from '../../Types/Interface';
-
-let initData: ITodo[] = [];
-
 export const Storage: IStorage = {
   FetchData: () => {
     const todos: string | any = window.localStorage.getItem('todos');
