@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { ITodo } from '../Types/Interface';
 import TodoInput from './components/TodoInput/NewTodo';
 import TodoList from './components/TodoList/TodoList';
+import { Storage } from './utils/LocalStorage';
 
 const todoTempData: ITodo[] = [
   {
@@ -18,11 +19,12 @@ const todoTempData: ITodo[] = [
 ];
 
 function App() {
-  const [todos, setTodos] = useState(todoTempData);
+  const [todos, setTodos] = useState(Storage.FetchData());
   // console.log(todos);
   const addNewTodoHandler = (todoData: ITodo) => {
     // console.log(todoData, todos);
     setTodos((prevState) => {
+      Storage.SaveData([todoData, ...prevState]);
       return [todoData, ...prevState];
     });
   };
@@ -44,6 +46,7 @@ function App() {
 
     // console.log(updatedTodo);
     setTodos(updatedTodo);
+    Storage.SaveData(updatedTodo);
   };
 
   return (

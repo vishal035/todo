@@ -3,3 +3,8 @@ export interface ITodo {
   todo: string;
   done: string;
 }
+
+export interface IStorage {
+  SaveData: (todos: ITodo[]) => void;
+  FetchData: () => ITodo[];
+}
