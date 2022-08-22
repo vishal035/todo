@@ -1,22 +1,8 @@
-import { ObjectID } from 'bson';
 import { useState } from 'react';
 import { ITodo } from '../Types/Interface';
 import TodoInput from './components/TodoInput/NewTodo';
 import TodoList from './components/TodoList/TodoList';
 import { Storage } from './utils/LocalStorage';
-
-const todoTempData: ITodo[] = [
-  {
-    id: new ObjectID().toString(),
-    todo: 'Just Start Add Temp Todos.',
-    done: 'false',
-  },
-  {
-    id: new ObjectID().toString(),
-    todo: 'Done Todos.',
-    done: 'true',
-  },
-];
 
 function App() {
   const [todos, setTodos] = useState(Storage.FetchData());

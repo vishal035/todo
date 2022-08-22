@@ -5,9 +5,12 @@ let initData: ITodo[] = [];
 export const Storage: IStorage = {
   FetchData: () => {
     const todos: string | any = window.localStorage.getItem('todos');
-
-    if (todos.length === 0) return initData;
-    return JSON.parse(todos);
+    // console.log(todos);
+    if (todos) {
+      return JSON.parse(todos);
+    } else {
+      return [];
+    }
   },
 
   SaveData: (todos: ITodo[]) => {
