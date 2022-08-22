@@ -48,9 +48,9 @@ function App() {
 
   return (
     <div className="conatiner w-screen h-screen bg-primary-white font-sans box-border">
-      <section className="relative w-[60%] h-fit py-6 px-4 rounded-md shadow-2xl bg-white mx-auto top-20">
+      <section className="relative w-screen h-screen md:w-[80%] md:h-fit max-w-screen-sm  py-6 px-4 rounded-md shadow-2xl bg-white mx-auto top-20">
         <header className="w-fit mx-auto">
-          <h1 className="text-3xl px-4 flex flex-row items-start text-black border-b-2 border-green-400 font-bold uppercase ">
+          <h1 className="text-3xl px-4 flex flex-row items-start text-gray-600 border-b-2 border-green-400 font-bold uppercase ">
             Todo App
           </h1>
         </header>
