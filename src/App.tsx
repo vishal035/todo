@@ -18,10 +18,6 @@ function App() {
   const todoDoneHandler = (todoData: ITodo) => {
     const updatedTodo = todos.map((todo) => {
       if (todo.id === todoData.id) {
-        // console.log({
-        //   ...todo,
-        //   done: todoData.done !== 'true' ? 'true' : 'false',
-        // });
         return {
           ...todo,
           done: todoData.done !== 'true' ? 'true' : 'false',
