@@ -7,9 +7,10 @@ import ListItems from './ListItems';
 interface IPropsType {
   todos: ITodo[];
   onTodoDone: (updatedTodoData: ITodo) => void;
+  deleteTodo: (id: string) => void;
 }
 
-const TodoList = ({ todos, onTodoDone }: IPropsType) => {
+const TodoList = ({ todos, onTodoDone, deleteTodo }: IPropsType) => {
   const onClickTodoDone = (event: any) => {
     // console.log({
     //   id: event.target.dataset.key,
@@ -23,11 +24,20 @@ const TodoList = ({ todos, onTodoDone }: IPropsType) => {
     });
   };
 
+  const deleteTodoHandler = (id: string) => {
+    deleteTodo(id);
+  };
+
   return (
     <div className="relative mx-8 mt-4 py-6 ">
       <ul className="flex flex-col items-center" onClick={onClickTodoDone}>
         {todos.map((todo) => (
-          <ListItems todo={todo} key={todo.id} onTodoClick={onClickTodoDone} />
+          <ListItems
+            todo={todo}
+            key={todo.id}
+            onTodoClick={onClickTodoDone}
+            deleteTodoEvent={deleteTodoHandler}
+          />
         ))}
       </ul>
     </div>

@@ -31,6 +31,10 @@ function App() {
     Storage.SaveData(updatedTodo);
   };
 
+  const deleteTodoHandler = (id: string) => {
+    console.log('Todo Deleted');
+  };
+
   return (
     <div className="conatiner w-screen h-screen bg-primary-white font-sans box-border">
       <section className="relative w-screen h-screen md:w-[80%] md:h-fit max-w-screen-sm  py-6 px-4 rounded-md shadow-2xl bg-white mx-auto top-20">
@@ -41,7 +45,11 @@ function App() {
         </header>
         <main>
           <TodoInput addNewTodo={addNewTodoHandler} />
-          <TodoList todos={todos} onTodoDone={todoDoneHandler} />
+          <TodoList
+            todos={todos}
+            onTodoDone={todoDoneHandler}
+            deleteTodo={deleteTodoHandler}
+          />
         </main>
       </section>
     </div>

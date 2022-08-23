@@ -5,9 +5,14 @@ import TodoDelete from '../TodoDelete/TodoDelete';
 interface IPropsType {
   todo: ITodo;
   onTodoClick: (event: any) => void;
+  deleteTodoEvent: (id: string) => void;
 }
 
-const ListItems = ({ todo, onTodoClick }: IPropsType) => {
+const ListItems = ({ todo, onTodoClick, deleteTodoEvent }: IPropsType) => {
+  const todoDeleteHandler = (id: string) => {
+    deleteTodoEvent(id);
+  };
+
   return (
     <>
       <li
@@ -21,7 +26,7 @@ const ListItems = ({ todo, onTodoClick }: IPropsType) => {
         onClick={onTodoClick}
       >
         {todo.todo}
-        <TodoDelete />
+        <TodoDelete id={todo.id} deleteById={todoDeleteHandler} />
       </li>
     </>
   );
