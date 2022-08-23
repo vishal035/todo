@@ -7,4 +7,5 @@ export interface ITodo {
 export interface IStorage {
   SaveData: (todos: ITodo[]) => void;
   FetchData: () => ITodo[];
+  DeleteData: (todos: ITodo[]) => void;
 }

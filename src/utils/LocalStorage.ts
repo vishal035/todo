@@ -13,4 +13,17 @@ export const Storage: IStorage = {
   SaveData: (todos: ITodo[]) => {
     window.localStorage.setItem('todos', JSON.stringify(todos));
   },
+
+  DeleteData: (todos: ITodo[]) => {
+    let timer;
+
+    clearTimeout(timer);
+    console.log(todos);
+    window.localStorage.removeItem('todos');
+    timer = setTimeout(() => {
+      window.localStorage.setItem('todos', JSON.stringify(todos));
+      window.location.reload();
+    }, 200);
+    // window.localStorage.removeItem('todos');
+  },
 };

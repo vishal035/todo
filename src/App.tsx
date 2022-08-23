@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ITodo } from '../Types/Interface';
 import TodoInput from './components/TodoInput/NewTodo';
 import TodoList from './components/TodoList/TodoList';
@@ -32,7 +32,12 @@ function App() {
   };
 
   const deleteTodoHandler = (id: string) => {
-    console.log('Todo Deleted');
+    // console.log('Todo Deleted');
+    // const todoToDeleteIndex = todos.findIndex((todo) => todo.id === id);
+    const newUpdatedTodo = todos.filter((todo) => todo.id !== id);
+    Storage.DeleteData(newUpdatedTodo);
+
+    setTodos(newUpdatedTodo);
   };
 
   return (

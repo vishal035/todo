@@ -9,7 +9,7 @@ interface IPropsType {
 const TodoDelete = ({ id, deleteById }: IPropsType) => {
   const onClickToDeleteHandler = (event: { target: any }) => {
     deleteById(event.target.getAttribute('id'));
-    console.log('Deleted: ', event.target.getAttribute('id'));
+    // console.log('Deleted: ', event.target.getAttribute('id'));
   };
 
   return (
